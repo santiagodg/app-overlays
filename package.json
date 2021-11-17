@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/santiagodg/app-overlays#readme",
   "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1"
   }

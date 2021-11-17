@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Dom to Image testing</title>
+</head>
+<body style="height: 100%">
+    <h1>Dom to Image Testing</h1>
+
+    <div class="d-inline-block" style="border: 5px solid dark;">
+        <div id="my-node" style="height: 720px; width: 1280px; position: relative;">
+            <svg style="position: absolute; top: 0; left: 0; height: 150px; z-index: 2; width: 100%;">
+                <polygon points="0,0 640,0 640,150 0,150" style="fill: var(--blue);" />
+                <polygon points="640,0 1280,0 1280,150 640,150" style="fill: var(--red);" />
+                <polygon points="0,0 1280,0 1220,120 640,150 60,120" style="fill:var(--dark);" />
+                Sorry, your browser does not support inline SVG.
+            </svg>
+            <div style="position: absolute; height: 150px; width: 100%; z-index: 3;">
+                <div class="row no-gutters h-100">
+                    <div class="col-4">
+                        <div class="row no-gutters h-100">
+                            <div class="col-4"></div>
+                            <div class="col-8">
+                                <h2 class="m-0 mb-3 pt-4 text-light text-left font-italic" style="font-size: 1rem;">21 SHADOWBRINGERS</h2>
+                                <h6 class="m-0 mb-3 text-light text-left font-italic" style="font-size: 0.75rem;">DANI Y ALLURE</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="row no-gutters h-100">
+                            <div class="col-3 p-3">
+                                <div class="rounded-circle h-100 w-100 bg-light"></div>
+                            </div>
+                            <div class="col-6">
+                                <h2 class="m-0 mb-3 pt-4 text-light text-center" style="font-size: 1.5rem;">FASE DE PLAYOFFS</h2>
+                                <h6 class="m-0 text-light text-center" style="font-size: 1rem;">PARCHE 11.21</h6>
+                            </div>
+                            <div class="col-3 p-3">
+                                <div class="rounded-circle h-100 w-100 bg-light"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="row no-gutters h-100">
+                            <div class="col-8">
+                                <h2 class="m-0 mb-3 pt-4 text-light text-right font-italic" style="font-size: 1rem;">DRAGONES CAROLINA</h2>
+                                <h6 class="m-0 mb-3 text-light text-right font-italic" style="font-size: 0.75rem;">LEONEL</h2>
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/dom-to-image.min.js"></script>
+    <script>
+        var node = document.getElementById('my-node');
+
+        domtoimage.toPng(node)
+            .then(function (dataUrl) {
+                var img = new Image();
+                img.src = dataUrl;
+                document.body.appendChild(img);
+            })
+            .catch(function (error) {
+                console.error('oops, something went wrong!', error);
+            });
+    </script>
+</body>
+</html>

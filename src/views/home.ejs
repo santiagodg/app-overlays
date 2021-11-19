@@ -4,10 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" >
     <title>Home</title>
 </head>
-<body>
-    <h1>Home</h1>
-    <input type="file" name="" id="">
+
+<body class="text-center">
+<section id="hero">
+    <div class="hero-container">
+      <a href="/" class="hero-logo" data-aos="zoom-in"><img src="img/feg-logo.png" alt="" id="logo"></a>
+      <h1 data-aos="zoom-in">Tournament Overlay Generator</h1>
+      <h2 data-aos="fade-up">League of Legends Postgame Stats Overlay App</h2>
+    
+      <!-- matchId -->
+      <div data-aos="fade-up" data-aos-delay="450" class="form-group matchInfo" style="display: flex; ">
+        <label for="matchId"></label>
+        <input type="matchId" class="form-control" placeholder="# Match id" id="matchId" style="width: 200%">
+          <select class="form-control" aria-label="Match Phase" id="matchPhase">
+            <option selected>Showmatch</option>
+            <option value="Grupos">Grupos</option>
+            <option value="Playoffs">Playoffs</option>
+            <option value="Especiales">Especiales</option>
+          </select>
+          <select class="form-control" aria-label="Tournament" id="tournament" style="width: 75%">
+            <option selected>LLC</option>
+            <option value="LPF">LPF</option>
+          </select>
+      </div>
+
+      <div style="display: flex;">
+        <div class="team-info" id="blue-team">
+          <h3 data-aos="fade-up" id="blue-team-title">Blue Team</h3>
+          <!--Team Name-->
+          <div data-aos="fade-up" data-aos-delay="450" class="form-group">
+            <label for="blueTeamName"></label>
+            <input type="matchId" class="form-control" placeholder="Blue Team Name" id="blueTeamName">
+          </div>
+          <!-- Seleccionar archivo -->
+          <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
+            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+            <label class="custom-file-label" style="text-align:left;" for="customFileLang">Seleccionar Archivo</label>
+          </div>
+        </div>
+        <div class="team-info" id="red-team">
+          <h3 data-aos="fade-up" id="red-team-title">Red Team</h3>
+          <!--Team Name-->
+          <div data-aos="fade-up" data-aos-delay="450" class="form-group">
+            <label for="redTeamName"></label>
+            <input type="matchId" class="form-control" placeholder="Red Team Name" id="redTeamName">
+          </div>
+          <!-- Seleccionar archivo -->
+          <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
+            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+            <label class="custom-file-label" style="text-align:left;" for="customFileLang">Seleccionar Archivo</label>
+          </div>
+        </div>
+      </div>
+      
+      <button type="button" class="btn btn-lg" style="background-color: #00FFC7;" >GO</button>
+      <div id="credits"> 
+        Developed by Santiago D, Abraham H, Nadia G, Jose G & Karina A. © 2021
+      </div>
+    </div>
+</section>
+
 </body>
+
+<!-- Template Main CSS File -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
 </html>

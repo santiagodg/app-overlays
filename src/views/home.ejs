@@ -4,10 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" >
     <title>Home</title>
 </head>
-<body>
-    <h1>Home</h1>
-    <input type="file" name="" id="">
+
+<body class="text-center">
+
+<section id="hero">
+    <div class="hero-container">
+      <a href="/" class="hero-logo" data-aos="zoom-in"><img src="img/hero-logo.png" alt=""></a>
+      <h1 data-aos="zoom-in">Welcome To Knight Studios</h1>
+      <h2 data-aos="fade-up">league of legends match stats</h2>
+    
+      <!-- matchId -->
+      <div data-aos="fade-up" data-aos-delay="450" class="form-group">
+        <label for="matchId"></label>
+        <input type="matchId" class="form-control" placeholder="# Match id" id="matchId">
+      </div>
+
+      <!-- Seleccionar archivo -->
+      <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
+        <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+        <label class="custom-file-label" style="text-align:left;" for="customFileLang">Seleccionar Archivo</label>
+      </div>
+
+    </div>
+</section>
+
 </body>
+
+<!-- Template Main CSS File -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
 </html>

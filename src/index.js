@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const bodyParser = require('body-parser');
 const express = require('express');
 
 const { MatchAPI } = require('./lol/lol');
@@ -10,19 +11,19 @@ app.use(express.json());
 
 const port = 3000;
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
-app.use(express.urlencoded());
 app.use(express.static('src/public'));
 var bb = require('express-busboy');
 bb.extend(app);
 
 app.get('/', (req, res) => {
-  res.render('home');
+  return res.render('home');
 });
 
 app.post('/output', async (req, res) => {
-    
     const matchData = await MatchAPI.get(req.body.matchId);
 
     if (matchData === null) {

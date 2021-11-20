@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Output</h1>
+    <p>Duración: <%= data.duracion %></p>
+    <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[0] %>.png">
     <pre>
         <%= JSON.stringify(data, null, 2) %>
     </pre>

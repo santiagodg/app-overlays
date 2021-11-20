@@ -18,52 +18,54 @@
       <h1 data-aos="zoom-in">Tournament Overlay Generator</h1>
       <h2 data-aos="fade-up">League of Legends Postgame Stats Overlay App</h2>
     
-      <!-- matchId -->
-      <div data-aos="fade-up" data-aos-delay="450" class="form-group matchInfo" style="display: flex; ">
-        <label for="matchId"></label>
-        <input type="matchId" class="form-control" placeholder="# Match id" id="matchId" style="width: 200%">
-          <select class="form-control" aria-label="Match Phase" id="matchPhase">
-            <option selected>Showmatch</option>
-            <option value="Grupos">Grupos</option>
-            <option value="Playoffs">Playoffs</option>
-            <option value="Especiales">Especiales</option>
-          </select>
-          <select class="form-control" aria-label="Tournament" id="tournament" style="width: 75%">
-            <option selected>LLC</option>
-            <option value="LPF">LPF</option>
-          </select>
-      </div>
+      <form action="/output" method="POST">
+        <!-- matchId -->
+        <div data-aos="fade-up" data-aos-delay="450" class="form-group matchInfo" style="display: flex; ">
+          <label for="matchId"></label>
+          <input type="text" class="form-control" placeholder="# Match id" id="matchId" name="matchId" style="width: 200%">
+            <select class="form-control" aria-label="Match Phase" id="matchPhase" name="matchPhase">
+              <option value="Showmatch" selected>Showmatch</option>
+              <option value="Grupos">Grupos</option>
+              <option value="Playoffs">Playoffs</option>
+              <option value="Especiales">Especiales</option>
+            </select>
+            <select class="form-control" aria-label="Tournament" id="tournament" name="tournament" style="width: 75%">
+              <option value="LLC" selected>LLC</option>
+              <option value="LPF">LPF</option>
+            </select>
+        </div>
 
-      <div style="display: flex;">
-        <div class="team-info" id="blue-team">
-          <h3 data-aos="fade-up" id="blue-team-title">Blue Team</h3>
-          <!--Team Name-->
-          <div data-aos="fade-up" data-aos-delay="450" class="form-group">
-            <label for="blueTeamName"></label>
-            <input type="matchId" class="form-control" placeholder="Blue Team Name" id="blueTeamName">
+        <div style="display: flex;">
+          <div class="team-info" id="blue-team">
+            <h3 data-aos="fade-up" id="blue-team-title">Blue Team</h3>
+            <!--Team Name-->
+            <div data-aos="fade-up" data-aos-delay="450" class="form-group">
+              <label for="blueTeamName"></label>
+              <input type="text" class="form-control" placeholder="Blue Team Name" id="blueTeamName" name="blueTeamName">
+            </div>
+            <!-- Seleccionar archivo -->
+            <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
+              <input type="file" class="custom-file-input" id="blueTeamLogo" name="blueTeamLogo" lang="es">
+              <label class="custom-file-label" style="text-align:left;" for="blueTeamLogo">Seleccionar Archivo</label>
+            </div>
           </div>
-          <!-- Seleccionar archivo -->
-          <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
-            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-            <label class="custom-file-label" style="text-align:left;" for="customFileLang">Seleccionar Archivo</label>
+          <div class="team-info" id="red-team">
+            <h3 data-aos="fade-up" id="red-team-title">Red Team</h3>
+            <!--Team Name-->
+            <div data-aos="fade-up" data-aos-delay="450" class="form-group">
+              <label for="redTeamName"></label>
+              <input type="text" class="form-control" placeholder="Red Team Name" id="redTeamName" name="redTeamName">
+            </div>
+            <!-- Seleccionar archivo -->
+            <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
+              <input type="file" class="custom-file-input" id="redTeamLogo" name="redTeamLogo" lang="es">
+              <label class="custom-file-label" style="text-align:left;" for="redTeamLogo">Seleccionar Archivo</label>
+            </div>
           </div>
         </div>
-        <div class="team-info" id="red-team">
-          <h3 data-aos="fade-up" id="red-team-title">Red Team</h3>
-          <!--Team Name-->
-          <div data-aos="fade-up" data-aos-delay="450" class="form-group">
-            <label for="redTeamName"></label>
-            <input type="matchId" class="form-control" placeholder="Red Team Name" id="redTeamName">
-          </div>
-          <!-- Seleccionar archivo -->
-          <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
-            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-            <label class="custom-file-label" style="text-align:left;" for="customFileLang">Seleccionar Archivo</label>
-          </div>
-        </div>
-      </div>
-      
-      <button type="button" onclick={sendData()} class="btn btn-lg" style="background-color: #00FFC7;" >GO</button>
+        
+        <button type="submit" class="btn btn-lg" style="background-color: #00FFC7;" >GO</button>
+      </form>
       <div id="credits"> 
         Developed by Santiago D, Abraham H, Nadia G, Jose G & Karina A. © 2021
       </div>
@@ -74,35 +76,8 @@
 
 <!-- Template Main CSS File -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     AOS.init();
-
-    function sendData(){
-        
-        const matchId = document.getElementById('matchId').value
-        const matchPhase = document.getElementById('matchPhase').value
-        const tournament = document.getElementById('tournament').value
-        const blueName = document.getElementById('blueTeamName').value
-        const redName = document.getElementById('redTeamName').value
-
-        matchData = {
-            matchId : matchId,
-            matchPhase : matchPhase,
-            tournament : tournament,
-            blueName : blueName,
-            redName : redName
-        }
-
-        axios.post('/output', matchData)
-        .then((response) => {
-            console.log(response);
-        }, (error) => {
-            console.log(error);
-        });
-        
-    }
-
 </script>
 
 </html>

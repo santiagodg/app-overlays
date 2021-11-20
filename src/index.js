@@ -6,20 +6,24 @@ const { MatchAPI } = require('./lol/lol');
 const { championIDToName } = require('./champions');
 
 const app = express();
+app.use(express.json());
+
 const port = 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
 app.use(express.urlencoded());
-
 app.use(express.static('src/public'));
+var bb = require('express-busboy');
+bb.extend(app);
 
 app.get('/', (req, res) => {
   res.render('home');
 });
 
-app.get('/output', async (req, res) => {
-    const matchData = await MatchAPI.get('LA1_1166928407');
+app.post('/output', async (req, res) => {
+    
+    const matchData = await MatchAPI.get(req.body.matchId);
 
     if (matchData === null) {
         console.log('Failed to get match data.');

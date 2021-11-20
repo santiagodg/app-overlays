@@ -63,7 +63,7 @@
         </div>
       </div>
       
-      <button type="button" class="btn btn-lg" style="background-color: #00FFC7;" >GO</button>
+      <button type="button" onclick={sendData()} class="btn btn-lg" style="background-color: #00FFC7;" >GO</button>
       <div id="credits"> 
         Developed by Santiago D, Abraham H, Nadia G, Jose G & Karina A. © 2021
       </div>
@@ -74,8 +74,35 @@
 
 <!-- Template Main CSS File -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     AOS.init();
+
+    function sendData(){
+        
+        const matchId = document.getElementById('matchId').value
+        const matchPhase = document.getElementById('matchPhase').value
+        const tournament = document.getElementById('tournament').value
+        const blueName = document.getElementById('blueTeamName').value
+        const redName = document.getElementById('redTeamName').value
+
+        matchData = {
+            matchId : matchId,
+            matchPhase : matchPhase,
+            tournament : tournament,
+            blueName : blueName,
+            redName : redName
+        }
+
+        axios.post('/output', matchData)
+        .then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error);
+        });
+        
+    }
+
 </script>
 
 </html>

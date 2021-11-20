@@ -4,14 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+        rel="stylesheet">
     <title>Output</title>
 </head>
 <body>
-    <h1>Output</h1>
-    <p>Duración: <%= data.duracion %></p>
+    <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="img/feg-logo.png" alt="Far East Gaming logo" height="24"
+                    class="d-inline-block align-text-top">
+                <span id="navtitle">Postgame Overlay Generator</span>
+            </a>
+        </div>
+    </nav>
+    <div id="overlay"  style="background-color: #000000;">
+        <div style="display: flex; justify-content: space-evenly;">
+            <div id="left-info">
+                <h1 id="overlay-title">ESTADÍSTICAS DE LA PARTIDA</h1>
+                <div id="first-quadrant">
+                    <div id="logos" style="display: flex; justify-content: space-around;">
+                        <div id="blue-team" style="display: flex; flex-direction: column; align-items: center">
+                            <div id="blue-logo"></div>
+                            <p class="stats-title">BLUE TEAM</p>
+                            <p class="stats-result">Nombre del equipo</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+                            <p id="vs">vs</p>
+                            <p class="stats-title">Tiempo</p>
+                            <p class="stats-result">
+                                <%=data.duracion%>
+                            </p>
+                        </div>
+                        <div id="red-team" style="display: flex; flex-direction: column; align-items: center">
+                            <div id="red-logo"></div>
+                            <p class="stats-title">RED TEAM</p>
+                            <p class="stats-result">Nombre del equipo</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="left-line" style="border: 4px solid;">
+                <div id="second-quadrant">
+                    <p class="overlay-subtitle">Selecciones</p>
+                </div>
+                <hr class="left-line">
+                <div id="third-quadrant">
+                    <p class="overlay-subtitle">Prohibiciones</p>
+                </div>
+                <hr class="left-line">
+                <div class="last-quadrants">
+                    <p class="overlay-subsubtitle">Torres</p>
+                </div>
+                <hr class="left-line">
+                <div class="last-quadrants">
+                    <p class="overlay-subsubtitle">Dragones</p>
+                </div>
+                <hr class="left-line">
+                <div class="last-quadrants">
+                    <p class="overlay-subsubtitle">Barón</p>
+                </div>
+                <hr class="left-line">
+            </div>
+            <div id="right-info">
+                <div id="first-section">
+                    <p class="overlay-subsubtitle">Estadísticas</p>
+                    <p class="stats-title">K / D / A</p>
+                    <p class="stats-title">Oro total</p>
+                    <p class="stats-title">Puntos de visión</p>
+                </div>
+                <hr class="right-line">
+                <div id="second-section">
+                    <p class="overlay-subtitle">Damage dealt</p>
+                </div>
+                <hr class="right-line">
+                <div id="third-section">
+                    <p class="overlay-subtitle">Gold distribution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>Duración: <%= data.duracion %>
+    </p>
     <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[0] %>.png">
     <pre>
         <%= JSON.stringify(data, null, 2) %>
     </pre>
+    
 </body>
 </html>

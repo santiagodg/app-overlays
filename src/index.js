@@ -1,10 +1,33 @@
 require('dotenv').config();
+const util = require("util");
+const path = require("path");
 
 const bodyParser = require('body-parser');
 const express = require('express');
 
 const { MatchAPI } = require('./lol/lol');
 const { championIDToName } = require('./champions');
+
+const multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+      callback(null, path.join(`${__dirname}/public/uploads`));
+    },
+    filename: (req, file, callback) => {
+      const match = ["image/png", "image/jpeg"];
+  
+      if (match.indexOf(file.mimetype) === -1) {
+        var message = `${file.originalname} is invalid. Only accept png/jpeg.`;
+        return callback(message, null);
+      }
+  
+      var filename = `${file.originalname}`;
+      callback(null, filename);
+    }
+  });
+
+const upload = multer({ storage: storage })
 
 const app = express();
 app.use(express.json());
@@ -16,14 +39,13 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
 app.use(express.static('src/public'));
-var bb = require('express-busboy');
-bb.extend(app);
 
 app.get('/', (req, res) => {
   return res.render('home');
 });
 
-app.post('/output', async (req, res) => {
+const logosUpload = upload.fields([{ name: 'blueTeamLogo', maxCount: 1 }, { name: 'redTeamLogo', maxCount: 1 }])
+app.post('/output', logosUpload, async (req, res, next) => {
     const matchData = await MatchAPI.get(req.body.matchId);
 
     if (matchData === null) {
@@ -162,6 +184,8 @@ app.post('/output', async (req, res) => {
     const result = {
         duracion: duration(matchData.info.gameDuration),
         ventajaOro: Math.abs(goldEarned(winnerID) - goldEarned(loserID)),
+        redTeamLogo: req.files.redTeamLogo[0].filename,
+        blueTeamLogo: req.files.blueTeamLogo[0].filename,
         ganador: {
             seleccion: seleccion(winnerID),
             prohibicion: prohibicion(winnerID),

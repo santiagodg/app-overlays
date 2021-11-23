@@ -51,7 +51,7 @@ const logosUpload = upload.fields([
 app.post('/output', logosUpload, async (req, res, next) => {
   const matchData = await MatchAPI.get(req.body.matchId)
 
-  console.log(req.files.redTeamLogo[0].filename)
+  console.log(matchData.info.teams)
   if (matchData === null) {
     console.log('Failed to get match data.')
 
@@ -168,7 +168,7 @@ app.post('/output', logosUpload, async (req, res, next) => {
       if (curr.win !== true) {
         return prev
       }
-
+      console.log(curr.teamID)
       return curr.teamId
     }, 0)
   })()
@@ -222,8 +222,30 @@ app.post('/output', logosUpload, async (req, res, next) => {
       puntosDeVision: visionScore(loserID),
       damage: damage(loserID),
     },
+    /*
+    blueTeam: {
+      seleccion: seleccion(100),
+      prohibicion: prohibicion(100),
+      torre: torres(100),
+      dragon: dragon(100),
+      baron: baron(100),
+      kda: kda(100),
+      oro: goldEarned(100),
+      puntosDeVision: visionScore(100),
+      damage: damage(100),
+    },
+    redTeam: {
+      seleccion: seleccion(200),
+      prohibicion: prohibicion(200),
+      torre: torres(200),
+      dragon: dragon(200),
+      baron: baron(200),
+      kda: kda(200),
+      oro: goldEarned(200),
+      puntosDeVision: visionScore(200),
+      damage: damage(200),
+    }*/
   }
-
   res.render('output', { data: result })
 })
 

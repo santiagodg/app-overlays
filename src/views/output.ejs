@@ -58,29 +58,69 @@
                 <hr class="left-line" style="border: 4px solid;">
                 <div id="second-quadrant">
                     <p class="overlay-subtitle">Selecciones</p>
+                    <div class="champions" >
+                        <div id="blue-selections" class="champions-images">
+                            <% for (var i=0; i < 5; i++ ) { %>
+                                <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[i] %>.png">
+                            <% } %>
+                        </div>
+                        <div style="width: 10%"></div>
+                        <div id="red-selections" class="champions-images">
+                            <% for (var i=0; i < 5; i++ ) { %>
+                                <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.seleccion[i] %>.png">
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
                 <hr class="left-line">
                 <div id="third-quadrant">
                     <p class="overlay-subtitle">Prohibiciones</p>
+                    <div class="champions">
+                        <div id="winner-prohibition" class="champions-images">
+                            <% for (var i=0; i < 5; i++ ) { %>
+                                <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.prohibicion[i] %>.png">
+                            <% } %>
+                        </div>
+                        <div style="width: 10%"></div>
+                        <div id="red-prohibitions" class="champions-images">
+                            <% for (var i=0; i < 5; i++ ) { %>
+                                <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.prohibicion[i] %>.png">
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
                 <hr class="left-line">
                 <div class="last-quadrants">
-                    <p class="overlay-subsubtitle">Torres</p>
+                    <p class="stats-result"><%=data.ganador.torre%></p>
+                    <p class="overlay-subsubtitle" style="width: 30%">Torres</p>
+                    <p class="stats-result"><%=data.perdedor.torre%></p>
                 </div>
                 <hr class="left-line">
                 <div class="last-quadrants">
-                    <p class="overlay-subsubtitle">Dragones</p>
+                    <p class="stats-result"><%=data.ganador.dragon%></p>
+                    <p class="overlay-subsubtitle" style="width: 30%">Dragones</p>
+                    <p class="stats-result"><%=data.perdedor.dragon%></p>
                 </div>
                 <hr class="left-line">
                 <div class="last-quadrants">
-                    <p class="overlay-subsubtitle">Barón</p>
+                    <p class="stats-result"><%=data.ganador.baron%></p>
+                    <p class="overlay-subsubtitle" style="width: 30%">Barón</p>
+                    <p class="stats-result"><%=data.perdedor.baron%></p>
                 </div>
                 <hr class="left-line">
             </div>
             <div id="right-info">
                 <div id="first-section">
                     <p class="overlay-subsubtitle">Estadísticas</p>
-                    <p class="stats-title">K / D / A</p>
+                    <div class="stats">
+                        <p class="stats-result">
+                            <%=data.ganador.kda.kills%> / <%=data.ganador.kda.deaths%> / <%=data.ganador.kda.assists%>
+                        </p>
+                        <p class="stats-title">K / D / A</p>
+                        <p class="stats-result">
+                            <%=data.perdedor.kda.kills%> / <%=data.perdedor.kda.deaths%> / <%=data.perdedor.kda.assists%>
+                        </p>
+                    </div>
                     <p class="stats-title">Oro total</p>
                     <p class="stats-title">Puntos de visión</p>
                 </div>
@@ -95,12 +135,7 @@
             </div>
         </div>
     </div>
-    <img src="uploads/<%=data.blueTeamLogo%>"/>
-    <img src="uploads/blueteam.png" alt="Girl in a jacket" width="500" height="600">
-    <p>Duración: <%= data.duracion %>
-    </p>
-    <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[0] %>.png">
-    <pre>
+    <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.prohibicion[0] %>.png"><pre>
         <%= JSON.stringify(data, null, 2) %>
     </pre>
     

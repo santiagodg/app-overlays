@@ -194,6 +194,14 @@ a:hover {
 
 .last-quadrants {
   height: 63px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.last-quadrants .stats-result {
+  font-size: 35px;
+  padding: 0 15px;
 }
 
 .left-line {
@@ -276,8 +284,27 @@ a:hover {
   border-color: white;
   width: 670px;
 }
+
+.stats {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
 .navbar {
   background: url('../img/hero-bg.png');
+}
+
+.champions {
+  display: flex;
+  height: 80px;
+  justify-content: space-evenly;
+}
+
+.champions-images {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 /*

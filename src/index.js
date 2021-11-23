@@ -45,8 +45,8 @@ app.get('/', (req, res) => {
 })
 
 const logosUpload = upload.fields([
-  { name: 'blueTeamLogo', maxCount: 1 },
-  { name: 'redTeamLogo', maxCount: 1 },
+  { name: 'winnerTeamLogo', maxCount: 1 },
+  { name: 'loserTeamLogo', maxCount: 1 },
 ])
 app.post('/output', logosUpload, async (req, res, next) => {
   const matchData = await MatchAPI.get(req.body.matchId)
@@ -194,10 +194,10 @@ app.post('/output', logosUpload, async (req, res, next) => {
   const result = {
     duracion: duration(matchData.info.gameDuration),
     ventajaOro: Math.abs(goldEarned(winnerID) - goldEarned(loserID)),
-    redTeamLogo: req.files.redTeamLogo[0].filename,
-    blueTeamLogo: req.files.blueTeamLogo[0].filename,
-    blueTeamName: req.body.blueTeamName,
-    redTeamName: req.body.redTeamName,
+    loserTeamLogo: req.files.loserTeamLogo[0].filename,
+    winnerTeamLogo: req.files.winnerTeamLogo[0].filename,
+    winnerTeamName: req.body.winnerTeamName,
+    loserTeamName: req.body.loserTeamName,
     matchPhase: req.body.matchPhase,
     tournament: req.body.tournament,
     ganador: {
@@ -223,7 +223,7 @@ app.post('/output', logosUpload, async (req, res, next) => {
       damage: damage(loserID),
     },
     /*
-    blueTeam: {
+    winnerTeam: {
       seleccion: seleccion(100),
       prohibicion: prohibicion(100),
       torre: torres(100),
@@ -234,7 +234,7 @@ app.post('/output', logosUpload, async (req, res, next) => {
       puntosDeVision: visionScore(100),
       damage: damage(100),
     },
-    redTeam: {
+    loserTeam: {
       seleccion: seleccion(200),
       prohibicion: prohibicion(200),
       torre: torres(200),

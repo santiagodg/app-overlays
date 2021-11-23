@@ -55,11 +55,11 @@ a:hover {
   text-transform: uppercase;
 }
 
-#red-team-title {
+#loser-team-title {
   color: rgb(235, 78, 78);
 }
 
-#blue-team-title {
+#winner-team-title {
   color: rgb(123, 123, 255);
 }
 
@@ -185,11 +185,11 @@ a:hover {
 }
 
 #second-quadrant {
-  height: 195px;
+  height: 190px;
 }
 
 #third-quadrant {
-  height: 195px;
+  height: 190px;
 }
 
 .last-quadrants {
@@ -231,16 +231,16 @@ a:hover {
   text-align: center;
 }
 
-#blue-logo {
-  /*background-color: blue;*/
-  width: 200px;
-  height: 200px;
+#winner-logo {
+  /*background-color: winner;*/
+  width: 180px;
+  height: 180px;
 }
 
-#red-logo {
-  /*background-color: red;*/
-  width: 200px;
-  height: 200px;
+#loser-logo {
+  /*background-color: loser;*/
+  width: 180px;
+  height: 180px;
 }
 
 #right-info {

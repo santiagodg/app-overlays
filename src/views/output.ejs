@@ -31,12 +31,12 @@
                 <h1 id="overlay-title">ESTADÍSTICAS DE LA PARTIDA</h1>
                 <div id="first-quadrant">
                     <div id="logos" style="display: flex; justify-content: space-around;">
-                        <div id="blue-team" style="display: flex; flex-direction: column; align-items: center">
-                            <div id="blue-logo">
-                                <img src="uploads/<%=data.blueTeamLogo%>" alt="Blue Team Logo" style="object-fit: contain; width: 100%; height: 100%;"/>
+                        <div id="winner-team" style="display: flex; flex-direction: column; align-items: center">
+                            <div id="winner-logo">
+                                <img src="uploads/<%=data.winnerTeamLogo%>" alt="Winner Team Logo" style="object-fit: contain; width: 100%; height: 100%;"/>
                             </div>
-                            <p class="stats-title">BLUE TEAM</p>
-                            <p class="stats-result"><%=data.blueTeamName%></p>
+                            <p class="stats-title">WIN</p>
+                            <p class="stats-result"><%=data.winnerTeamName%></p>
                         </div>
                         <div style="display: flex; flex-direction: column; justify-content: flex-end;">
                             <p class="stats-title"><%=data.matchPhase%></p></p>
@@ -46,12 +46,12 @@
                                 <%=data.duracion%>
                             </p>
                         </div>
-                        <div id="red-team" style="display: flex; flex-direction: column; align-items: center">
-                            <div id="red-logo">
-                                <img src="uploads/<%=data.redTeamLogo%>" alt="Red Team Logo" style="object-fit: contain; width: 100%; height: 100%;"/>
+                        <div id="loser-team" style="display: flex; flex-direction: column; align-items: center">
+                            <div id="loser-logo">
+                                <img src="uploads/<%=data.loserTeamLogo%>" alt="Loser Team Logo" style="object-fit: contain; width: 100%; height: 100%;"/>
                             </div>
-                            <p class="stats-title">RED TEAM</p>
-                            <p class="stats-result"><%=data.redTeamName%></p>
+                            <p class="stats-title">LOSE</p>
+                            <p class="stats-result"><%=data.loserTeamName%></p>
                         </div>
                     </div>
                 </div>
@@ -59,13 +59,13 @@
                 <div id="second-quadrant">
                     <p class="overlay-subtitle">Selecciones</p>
                     <div class="champions" >
-                        <div id="blue-selections" class="champions-images">
+                        <div id="winner-selections" class="champions-images">
                             <% for (var i=0; i < 5; i++ ) { %>
                                 <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[i] %>.png">
                             <% } %>
                         </div>
                         <div style="width: 10%"></div>
-                        <div id="red-selections" class="champions-images">
+                        <div id="loser-selections" class="champions-images">
                             <% for (var i=0; i < 5; i++ ) { %>
                                 <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.seleccion[i] %>.png">
                             <% } %>
@@ -82,7 +82,7 @@
                             <% } %>
                         </div>
                         <div style="width: 10%"></div>
-                        <div id="red-prohibitions" class="champions-images">
+                        <div id="loser-prohibitions" class="champions-images">
                             <% for (var i=0; i < 5; i++ ) { %>
                                 <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.prohibicion[i] %>.png">
                             <% } %>

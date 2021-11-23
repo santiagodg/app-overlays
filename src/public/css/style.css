@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   color: #555555;
 }
 
@@ -11,15 +11,6 @@ a {
 a:hover {
   color: #00ffc7;
   text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Montserrat', sans-serif;
 }
 
 .back-to-top {
@@ -159,6 +150,133 @@ h6 {
   transition: 0.5s;
   background: #fff;
   color: #00ffc7;
+}
+
+#navtitle {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 56px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+#overlay {
+  width: 1920px;
+  height: 1080px;
+  color: white;
+}
+
+#overlay-title {
+  font-size: 65px;
+  font-weight: bolder;
+  padding: 40px;
+  margin: 0;
+  width: 100%;
+}
+
+#left-info {
+  width: 920px;
+  height: 920px;
+}
+
+#first-quadrant {
+  height: 300px;
+}
+
+#second-quadrant {
+  height: 195px;
+}
+
+#third-quadrant {
+  height: 195px;
+}
+
+.last-quadrants {
+  height: 63px;
+}
+
+.left-line {
+  margin: auto;
+  border: 1px solid;
+  border-color: white;
+  width: 870px;
+}
+.overlay-subtitle {
+  font-size: 45px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+}
+
+.overlay-subsubtitle {
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+}
+
+#vs {
+  font-size: 64px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#blue-logo {
+  background-color: blue;
+  width: 200px;
+  height: 200px;
+}
+
+#red-logo {
+  background-color: red;
+  width: 200px;
+  height: 200px;
+}
+
+#right-info {
+  width: 860px;
+  height: 1080px;
+}
+
+#second-section {
+  height: 390px;
+}
+
+#first-section {
+  height: 300px;
+  padding-top: 47px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-title {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.stats-result {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+}
+
+#third-section {
+  height: 370px;
+}
+
+.right-line {
+  margin: auto;
+  border: 1px solid;
+  border-color: white;
+  width: 670px;
+}
+.navbar {
+  background: url('../img/hero-bg.png');
 }
 
 @media (min-width: 1024px) {

@@ -32,11 +32,14 @@
                 <div id="first-quadrant">
                     <div id="logos" style="display: flex; justify-content: space-around;">
                         <div id="blue-team" style="display: flex; flex-direction: column; align-items: center">
-                            <div id="blue-logo"></div>
+                            <div id="blue-logo">
+                                <img src="uploads/<%=data.blueTeamLogo%>" alt="Blue Team Logo" style="object-fit: contain; width: 100%; height: 100%;"/>
+                            </div>
                             <p class="stats-title">BLUE TEAM</p>
-                            <p class="stats-result">Nombre del equipo</p>
+                            <p class="stats-result"><%=data.blueTeamName%></p>
                         </div>
                         <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+                            <p class="stats-title"><%=data.matchPhase%></p></p>
                             <p id="vs">vs</p>
                             <p class="stats-title">Tiempo</p>
                             <p class="stats-result">
@@ -44,9 +47,11 @@
                             </p>
                         </div>
                         <div id="red-team" style="display: flex; flex-direction: column; align-items: center">
-                            <div id="red-logo"></div>
+                            <div id="red-logo">
+                                <img src="uploads/<%=data.redTeamLogo%>" alt="Red Team Logo" style="object-fit: contain; width: 100%; height: 100%;"/>
+                            </div>
                             <p class="stats-title">RED TEAM</p>
-                            <p class="stats-result">Nombre del equipo</p>
+                            <p class="stats-result"><%=data.redTeamName%></p>
                         </div>
                     </div>
                 </div>
@@ -90,6 +95,8 @@
             </div>
         </div>
     </div>
+    <img src="uploads/<%=data.blueTeamLogo%>"/>
+    <img src="uploads/blueteam.png" alt="Girl in a jacket" width="500" height="600">
     <p>Duración: <%= data.duracion %>
     </p>
     <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[0] %>.png">

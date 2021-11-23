@@ -63,9 +63,10 @@ a:hover {
   color: rgb(123, 123, 255);
 }
 
+/*
 .matchInfo {
   width: 50vw;
-}
+}*/
 
 #matchId {
   margin: 0 1vw;
@@ -176,7 +177,7 @@ a:hover {
 
 #left-info {
   width: 920px;
-  height: 920px;
+  height: 980px;
 }
 
 #first-quadrant {
@@ -223,13 +224,13 @@ a:hover {
 }
 
 #blue-logo {
-  background-color: blue;
+  /*background-color: blue;*/
   width: 200px;
   height: 200px;
 }
 
 #red-logo {
-  background-color: red;
+  /*background-color: red;*/
   width: 200px;
   height: 200px;
 }
@@ -279,6 +280,7 @@ a:hover {
   background: url('../img/hero-bg.png');
 }
 
+/*
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
@@ -294,3 +296,4 @@ a:hover {
     line-height: 22px;
   }
 }
+*/

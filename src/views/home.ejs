@@ -18,7 +18,7 @@
       <h1 data-aos="zoom-in">Postgame Overlay Generator</h1>
       <h2 data-aos="fade-up">League of Legends Postgame Stats Overlay App</h2>
     
-      <form action="/output" method="POST">
+      <form action="/output" enctype="multipart/form-data" method="post">
         <!-- matchId -->
         <div data-aos="fade-up" data-aos-delay="450" class="form-group matchInfo" style="display: flex; ">
           <label for="matchId"></label>
@@ -45,7 +45,7 @@
             </div>
             <!-- Seleccionar archivo -->
             <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
-              <input type="file" class="custom-file-input" id="blueTeamLogo" name="blueTeamLogo" lang="es">
+              <input type="file" accept="image/*" class="custom-file-input" id="blueTeamLogo" name="blueTeamLogo" lang="es">
               <label class="custom-file-label" style="text-align:left;" for="blueTeamLogo">Seleccionar Archivo</label>
             </div>
           </div>
@@ -58,7 +58,7 @@
             </div>
             <!-- Seleccionar archivo -->
             <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
-              <input type="file" class="custom-file-input" id="redTeamLogo" name="redTeamLogo" lang="es">
+              <input type="file" accept="image/*" class="custom-file-input" id="redTeamLogo" name="redTeamLogo" lang="es">
               <label class="custom-file-label" style="text-align:left;" for="redTeamLogo">Seleccionar Archivo</label>
             </div>
           </div>

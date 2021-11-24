@@ -54,7 +54,7 @@ const logosUpload = upload.fields([
   { name: 'loserTeamLogo', maxCount: 1 },
 ]);
 
-app.post('/output', logosUpload, async (req, res) => {
+const overlayOutput = async (req, res) => {
   const [match, matchError] = await handle(RiotAPI.MatchV5.matchByMatchID(req.body.matchId));
 
   if (matchError) {
@@ -72,7 +72,38 @@ app.post('/output', logosUpload, async (req, res) => {
   output.matchPhase     = req.body.matchPhase;
   output.tournament     = req.body.tournament;
 
-  res.render('output', { data: output });
+  return res.render('overlay', { data: output });
+};
+
+const socialMediaOutput = async (req, res) => {
+  const [match, matchError] = await handle(RiotAPI.MatchV5.matchByMatchID(req.body.matchId));
+
+  if (matchError) {
+    console.log(matchError);
+
+    return res.sendStatus(404);
+  }
+
+  const output = new Output(match);
+
+  output.loserTeamLogo  = req.files.loserTeamLogo[0].filename;
+  output.winnerTeamLogo = req.files.winnerTeamLogo[0].filename;
+  output.winnerTeamName = req.body.winnerTeamName;
+  output.loserTeamName  = req.body.loserTeamName;
+  output.matchPhase     = req.body.matchPhase;
+  output.tournament     = req.body.tournament;
+
+  return res.render('socialMedia', { data: output });
+};
+
+app.post('/output', logosUpload, async (req, res) => {
+  if (req.body.overlay !== undefined) {
+    return overlayOutput(req, res);
+  } else if (req.body.socialMedia !== undefined) {
+    return socialMediaOutput(req, res);
+  }
+
+  console.error('Output selection unknown');
 });
 
 app.listen(port, () => {

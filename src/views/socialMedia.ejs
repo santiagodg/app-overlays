@@ -53,9 +53,9 @@
             <div id="teamMembers">
                 <% for (var i=0; i < 5; i++ ) { %>
                     <div class="player">
-                        <p class="username"><%=data.ganador.seleccion[i]%></p>
+                        <p class="username"><%=data.ganador.seleccion[i].summoner%></p>
                         <div class="champion">
-                            <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[i] %>.png" alt="<%=data.ganador.seleccion[i]%>">
+                            <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[i].champion %>.png" alt="<%=data.ganador.seleccion[i].champion%>">
                         </div>
                     </div>
                 <% } %>
@@ -99,7 +99,7 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title">Heraldos</p>
-                    <p class="stat-result">23</p>
+                    <p class="stat-result"><%=data.ganador.herald%></p>
                 </div>
             </div>
         </div>
@@ -134,11 +134,11 @@
                 <% for (var i=0; i < 5; i++ ) { %>
                     <div class="player">
                         <p class="username">
-                            <%=data.perdedor.seleccion[i]%>
+                            <%=data.perdedor.seleccion[i].summoner%>
                         </p>
                         <div class="champion">
-                            <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.seleccion[i] %>.png"
-                                alt="<%=data.perdedor.seleccion[i]%>">
+                            <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.seleccion[i].champion %>.png"
+                                alt="<%=data.perdedor.seleccion[i].champion%>">
                         </div>
                     </div>
                     <% } %>
@@ -190,7 +190,9 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title">Heraldos</p>
-                    <p class="stat-result">23</p>
+                    <p class="stat-result">
+                        <%=data.perdedor.herald%>
+                    </p>
                 </div>
             </div>
         </div>

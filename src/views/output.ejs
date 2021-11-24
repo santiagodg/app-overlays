@@ -154,6 +154,9 @@
                                 </div>
                             <% } %>
                         </div>
+                        <div class="chart-container" style="position: relative; height:100vh; width:120vw">
+                            <canvas id="danoTotalChart"></canvas>
+                        </div>
                         <div id="loser-damage" class="damage">
                             <% for (var i=0; i < 5; i++ ) { %>
                                 <div class="damage-individual">
@@ -172,6 +175,7 @@
                     <p class="overlay-subtitle">Distribución de Oro</p>
                     <!--Cambiar esto por la distribucion de oro-->
                     <div style="display: flex; justify-content: space-evenly;">
+                        
                         <div id="winner-damage" class="damage">
                             <% for (var i=0; i < 5; i++ ) { %>
                                 <div class="damage-individual">
@@ -184,6 +188,9 @@
                                     </div>
                                 </div>
                                 <% } %>
+                        </div>
+                        <div class="chart-container" style="position: relative; height:100vh; width:120vw">
+                            <canvas id="distribucionOroChart"></canvas>
                         </div>
                         <div id="loser-damage" class="damage">
                             <% for (var i=0; i < 5; i++ ) { %>
@@ -208,4 +215,85 @@
     </pre>
     
 </body>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+<script>
+    
+    function horizontalBarChart(ctx, data1, data2){
+        var data = {
+            labels: ["", "", "", "", ""],
+            datasets: [{
+                label: "winner",
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgb(54, 162, 235)",
+                borderWidth: 2,
+                data: data1,
+                }, {
+                label: "loser",
+                backgroundColor: "rgba(255,99,132,0.2)",
+                borderColor: "rgba(255,99,132,1)",
+                borderWidth: 2,
+                data: data2,
+                },
+            ]
+            };
+        const myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            stacked: true,
+            data: data,
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                yAxes: [{
+                    stacked: true
+                }],
+                xAxes: [{
+                        display: false
+                    }]
+                }
+            }
+        });
+    }
+
+    // Dano Total
+    const ctx1 = document.getElementById('danoTotalChart');
+    const danoData1 = [
+    -Math.abs(parseInt(`<%= data.ganador.damage[0].amount %>`)),
+    -Math.abs(parseInt(`<%= data.ganador.damage[1].amount %>`)),
+    -Math.abs(parseInt(`<%= data.ganador.damage[2].amount %>`)),
+    -Math.abs(parseInt(`<%= data.ganador.damage[3].amount %>`)),
+    -Math.abs(parseInt(`<%= data.ganador.damage[4].amount %>`)) 
+    ]
+    const danoData2 = [
+        parseInt(`<%= data.perdedor.damage[0].amount %>`), 
+        parseInt(`<%= data.perdedor.damage[1].amount %>`), 
+        parseInt(`<%= data.perdedor.damage[2].amount %>`), 
+        parseInt(`<%= data.perdedor.damage[3].amount %>`), 
+        parseInt(`<%= data.perdedor.damage[4].amount %>`)
+    ]
+    //Distribucion oro
+    const ctx2 = document.getElementById('distribucionOroChart');
+    const oroData1 = [
+    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[0].amount %>`)),
+    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[1].amount %>`)),
+    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[2].amount %>`)),
+    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[3].amount %>`)),
+    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[4].amount %>`)) 
+    ]
+    const oroData2 = [
+        parseInt(`<%= data.perdedor.goldDistribution[0].amount %>`), 
+        parseInt(`<%= data.perdedor.goldDistribution[1].amount %>`), 
+        parseInt(`<%= data.perdedor.goldDistribution[2].amount %>`), 
+        parseInt(`<%= data.perdedor.goldDistribution[3].amount %>`), 
+        parseInt(`<%= data.perdedor.goldDistribution[4].amount %>`)]
+    
+    horizontalBarChart(ctx1, danoData1, danoData2)
+    horizontalBarChart(ctx2, oroData1, oroData2)
+    
+</script>
+
 </html>

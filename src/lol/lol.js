@@ -8,6 +8,7 @@ const handle = (promise) => {
 
 class MatchAPI {
     static async get(matchID) {
+
         const [response, error] = await handle(axios.get(`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=${process.env.API_KEY}`));
 
         if (error) {

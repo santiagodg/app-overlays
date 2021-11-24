@@ -51,6 +51,7 @@ a:hover {
   padding: 108px;
   display: flex;
   justify-content: space-between;
+  margin: auto;
 }
 
 #left {
@@ -93,7 +94,6 @@ a:hover {
 #teamLogo {
   width: 230px;
   height: 230px;
-  background-color: white;
   text-align: center;
 }
 
@@ -183,6 +183,12 @@ a:hover {
   box-shadow: 5px 5px var(--loser);
 }
 
+.champion img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 .stat {
   height: 60px;
   background-color: #2f2f2f;
@@ -230,6 +236,7 @@ a:hover {
   text-transform: uppercase;
   font-weight: 900;
   margin: 0;
+  width: 15%;
 }
 
 .accent {

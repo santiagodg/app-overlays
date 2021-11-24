@@ -34,13 +34,13 @@
     <div id="post-winner" class='post'>
         <div id="left">
             <div id="tornament-info">
-                <p id="tournament">LLC</p>
-                <p id="phase">Phase</p>
+                <p id="tournament"><%=data.tournament%></p></p>
+                <p id="phase"><%=data.matchPhase%></p>
             </div>
             <div id="teamLogo">
-                <img src="" alt="">
+                <img src="uploads/<%=data.winnerTeamLogo%>" alt="Winner Team logo">
             </div>
-            <p id="teamName">Team Name</p>
+            <p id="teamName"><%=data.winnerTeamName%></p>
             <div id="leagueLogo">
                 <img src="img/feg-logo.png" alt="Tournament Logo">
             </div>
@@ -53,9 +53,9 @@
             <div id="teamMembers">
                 <% for (var i=0; i < 5; i++ ) { %>
                     <div class="player">
-                        <p class="username">Username</p>
+                        <p class="username"><%=data.ganador.seleccion[i]%></p>
                         <div class="champion">
-                            <img src="" alt="">
+                            <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[i] %>.png" alt="<%=data.ganador.seleccion[i]%>">
                         </div>
                     </div>
                 <% } %>
@@ -67,7 +67,7 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title">Dragones</p>
-                    <p class="stat-result">23</p>
+                    <p class="stat-result"><%=data.ganador.dragon%></p>
                 </div>
                 <div class="stat" id="kills">
                     <div class="stat-img">
@@ -75,7 +75,7 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title accent">Asesinatos</p>
-                    <p class="stat-result accent">23</p>
+                    <p class="stat-result accent"><%=data.ganador.kda.kills%></p>
                 </div>
                 <div class="stat" id="barones">
                     <div class="stat-img">
@@ -83,7 +83,7 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title">Barones</p>
-                    <p class="stat-result">23</p>
+                    <p class="stat-result"><%=data.ganador.baron%></p>
                 </div>
                 <div class="stat" id="torres">
                     <div class="stat-img">
@@ -91,7 +91,7 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title accent">Torres</p>
-                    <p class="stat-result accent">23</p>
+                    <p class="stat-result accent"><%=data.ganador.torre%></p>
                 </div>
                 <div class="stat" id="heraldos">
                     <div class="stat-img">
@@ -104,33 +104,41 @@
             </div>
         </div>
     </div>
-
     <div id="post-loser" class='post'>
         <div id="left">
             <div id="tornament-info">
-                <p id="tournament">LLC</p>
-                <p id="phase">Phase</p>
+                <p id="tournament">
+                    <%=data.tournament%>
+                </p>
+                </p>
+                <p id="phase">
+                    <%=data.matchPhase%>
+                </p>
             </div>
             <div id="teamLogo">
-                <img src="" alt="">
+                <img src="uploads/<%=data.loserTeamLogo%>" alt="Loser Team logo">
             </div>
-            <p id="teamName">Team Name</p>
+            <p id="teamName">
+                <%=data.loserTeamName%>
+            </p>
             <div id="leagueLogo">
                 <img src="img/feg-logo.png" alt="Tournament Logo">
             </div>
         </div>
-
         <div id="right">
             <div id="title">
-                <h1 id="result">LOSER</h1>
+                <h1 id="result">Loser</h1>
                 <h2 id="result-spanish">Perdedor</h2>
             </div>
             <div id="teamMembers">
                 <% for (var i=0; i < 5; i++ ) { %>
                     <div class="player">
-                        <p class="username">Username</p>
+                        <p class="username">
+                            <%=data.perdedor.seleccion[i]%>
+                        </p>
                         <div class="champion">
-                            <img src="" alt="">
+                            <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.seleccion[i] %>.png"
+                                alt="<%=data.perdedor.seleccion[i]%>">
                         </div>
                     </div>
                     <% } %>
@@ -142,7 +150,9 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title">Dragones</p>
-                    <p class="stat-result">23</p>
+                    <p class="stat-result">
+                        <%=data.perdedor.dragon%>
+                    </p>
                 </div>
                 <div class="stat" id="kills">
                     <div class="stat-img">
@@ -150,7 +160,9 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title accent">Asesinatos</p>
-                    <p class="stat-result accent">23</p>
+                    <p class="stat-result accent">
+                        <%=data.perdedor.kda.kills%>
+                    </p>
                 </div>
                 <div class="stat" id="barones">
                     <div class="stat-img">
@@ -158,7 +170,9 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title">Barones</p>
-                    <p class="stat-result">23</p>
+                    <p class="stat-result">
+                        <%=data.perdedor.baron%>
+                    </p>
                 </div>
                 <div class="stat" id="torres">
                     <div class="stat-img">
@@ -166,7 +180,9 @@
                         <div class="line"></div>
                     </div>
                     <p class="stat-title accent">Torres</p>
-                    <p class="stat-result accent">23</p>
+                    <p class="stat-result accent">
+                        <%=data.perdedor.torre%>
+                    </p>
                 </div>
                 <div class="stat" id="heraldos">
                     <div class="stat-img">
@@ -179,6 +195,7 @@
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>

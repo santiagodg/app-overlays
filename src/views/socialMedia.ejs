@@ -20,14 +20,18 @@
 <body style="background-color: #000000;">
     <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="img/feg-logo.png" alt="Far East Gaming logo" height="24"
                     class="d-inline-block align-text-top">
-                <span id="navtitle">Postgame Overlay Generator</span>
+                <span id="navtitle">Postgame Graphics Generator</span>
             </a>
+            <div id="actions">
+                <a class="nav-item nav-link" href="#" id="download">Download Winner</a>
+                <a class="nav-item nav-link" href="#" id="download">Download Loser</a>
+            </div>
         </div>
     </nav>
-    <div id="post">
+    <div id="post-winner" class='post'>
         <div id="left">
             <div id="tornament-info">
                 <p id="tournament">LLC</p>
@@ -55,6 +59,81 @@
                         </div>
                     </div>
                 <% } %>
+            </div>
+            <div id="stats">
+                <div class="stat" id="dragones">
+                    <div class="stat-img">
+                        <img src="img/dragon.png" alt="Dragon">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title">Dragones</p>
+                    <p class="stat-result">23</p>
+                </div>
+                <div class="stat" id="kills">
+                    <div class="stat-img">
+                        <img src="img/asesinatos.png" alt="Asesinatos">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title accent">Asesinatos</p>
+                    <p class="stat-result accent">23</p>
+                </div>
+                <div class="stat" id="barones">
+                    <div class="stat-img">
+                        <img src="img/baron.png" alt="Barones">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title">Barones</p>
+                    <p class="stat-result">23</p>
+                </div>
+                <div class="stat" id="torres">
+                    <div class="stat-img">
+                        <img src="img/torre.png" alt="Torres">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title accent">Torres</p>
+                    <p class="stat-result accent">23</p>
+                </div>
+                <div class="stat" id="heraldos">
+                    <div class="stat-img">
+                        <img src="img/heraldo.png" alt="Heraldos">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title">Heraldos</p>
+                    <p class="stat-result">23</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="post-loser" class='post'>
+        <div id="left">
+            <div id="tornament-info">
+                <p id="tournament">LLC</p>
+                <p id="phase">Phase</p>
+            </div>
+            <div id="teamLogo">
+                <img src="" alt="">
+            </div>
+            <p id="teamName">Team Name</p>
+            <div id="leagueLogo">
+                <img src="img/feg-logo.png" alt="Tournament Logo">
+            </div>
+        </div>
+
+        <div id="right">
+            <div id="title">
+                <h1 id="result">LOSER</h1>
+                <h2 id="result-spanish">Perdedor</h2>
+            </div>
+            <div id="teamMembers">
+                <% for (var i=0; i < 5; i++ ) { %>
+                    <div class="player">
+                        <p class="username">Username</p>
+                        <div class="champion">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                    <% } %>
             </div>
             <div id="stats">
                 <div class="stat" id="dragones">

@@ -40,6 +40,8 @@ a:hover {
 
 .navbar {
   background: url('../img/hero-bg.png');
+  position: sticky;
+  top: 0;
 }
 
 .post {
@@ -246,4 +248,12 @@ a:hover {
 
 #post-loser .accent {
   color: var(--loser);
+}
+
+#credits {
+  width: 100vw;
+  background-color: #00ffc7;
+  bottom: 0;
+  padding: 1.5vh;
+  position: fixed;
 }

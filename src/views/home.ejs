@@ -22,7 +22,7 @@
         <!-- matchId -->
         <div data-aos="fade-up" data-aos-delay="450" class="form-group matchInfo" style="display: flex; margin: 0; justify-content: space-between;">
           <label for="matchId"></label>
-          <input type="text" class="form-control" placeholder="# Match id" id="matchId" name="matchId" style="width: 200%">
+          <input type="text" class="form-control" placeholder="# Match id" id="matchId" name="matchId" style="width: 200%" required>
             <select class="form-control" aria-label="Match Phase" id="matchPhase" name="matchPhase">
               <option value="Showmatch" selected>Showmatch</option>
               <option value="Grupos">Grupos</option>
@@ -41,12 +41,12 @@
             <!--Team Name-->
             <div data-aos="fade-up" data-aos-delay="450" class="form-group">
               <label for="winnerTeamName"></label>
-              <input type="text" class="form-control" placeholder="Winner Team Name" id="winnerTeamName" name="winnerTeamName">
+              <input type="text" class="form-control" placeholder="Winner Team Name" id="winnerTeamName" name="winnerTeamName" required>
             </div>
             <!-- Seleccionar archivo -->
             <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
-              <input type="file" accept="image/*" class="custom-file-input" id="winnerTeamLogo" name="winnerTeamLogo" lang="es">
-              <label class="custom-file-label" style="text-align:left;" for="winnerTeamLogo">Seleccionar Archivo</label>
+              <input type="file" accept="image/*" class="custom-file-input" id="winnerTeamLogo" name="winnerTeamLogo" lang="es" required>
+              <label class="custom-file-label" style="text-align:left;" for="winnerTeamLogo" id="winnerTeamLogoLabel">Seleccionar Archivo</label>
             </div>
           </div>
           <div class="team-info" id="loser-team">
@@ -54,12 +54,12 @@
             <!--Team Name-->
             <div data-aos="fade-up" data-aos-delay="450" class="form-group">
               <label for="loserTeamName"></label>
-              <input type="text" class="form-control" placeholder="Loser Team Name" id="loserTeamName" name="loserTeamName">
+              <input type="text" class="form-control" placeholder="Loser Team Name" id="loserTeamName" name="loserTeamName" required>
             </div>
             <!-- Seleccionar archivo -->
             <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
-              <input type="file" accept="image/*" class="custom-file-input" id="loserTeamLogo" name="loserTeamLogo" lang="es">
-              <label class="custom-file-label" style="text-align:left;" for="loserTeamLogo">Seleccionar Archivo</label>
+              <input type="file" accept="image/*" class="custom-file-input" id="loserTeamLogo" name="loserTeamLogo" lang="es" required>
+              <label class="custom-file-label" style="text-align:left;" for="loserTeamLogo" id="loserTeamLogoLabel">Seleccionar Archivo</label>
             </div>
           </div>
         </div>
@@ -84,6 +84,25 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
+
+    var loserInput = document.getElementById('loserTeamLogo');
+    var loserLabel = document.getElementById('loserTeamLogoLabel');
+    var winnerInput = document.getElementById('winnerTeamLogo');
+    var winnerLabel = document.getElementById('winnerTeamLogoLabel');
+
+    loserInput.addEventListener('change', showFileNameLoser);
+    winnerInput.addEventListener('change', showFileNameWinner);
+
+    function showFileNameLoser(event) {
+      var loserInput = event.srcElement;
+      var fileName = loserInput.files[0].name;
+      loserLabel.innerHTML =  fileName;
+    }
+    function showFileNameWinner(event) {
+      var winnerInput = event.srcElement;
+      var fileName = winnerInput.files[0].name;
+      winnerLabel.innerHTML = fileName;
+    }
 </script>
 
 </html>

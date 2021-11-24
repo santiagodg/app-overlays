@@ -64,13 +64,13 @@
                     <div class="champions" >
                         <div id="winner-selections" class="champions-images">
                             <% for (var i=0; i < 5; i++ ) { %>
-                                <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[i] %>.png">
+                                <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.seleccion[i].champion %>.png">
                             <% } %>
                         </div>
                         <div style="width: 10%"></div>
                         <div id="loser-selections" class="champions-images">
                             <% for (var i=0; i < 5; i++ ) { %>
-                                <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.seleccion[i] %>.png">
+                                <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.seleccion[i].champion %>.png">
                             <% } %>
                         </div>
                     </div>

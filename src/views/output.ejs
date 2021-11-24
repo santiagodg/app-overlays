@@ -35,7 +35,7 @@
                             <div id="winner-logo">
                                 <img src="uploads/<%=data.winnerTeamLogo%>" alt="Winner Team Logo" style="object-fit: contain; width: 100%; height: 100%;"/>
                             </div>
-                            <p class="stats-title">WIN</p>
+                            <p class="stats-title">GANADOR</p>
                             <p class="stats-result"><%=data.winnerTeamName%></p>
                         </div>
                         <div style="display: flex; flex-direction: column; justify-content: flex-end;">
@@ -50,7 +50,7 @@
                             <div id="loser-logo">
                                 <img src="uploads/<%=data.loserTeamLogo%>" alt="Loser Team Logo" style="object-fit: contain; width: 100%; height: 100%;"/>
                             </div>
-                            <p class="stats-title">LOSE</p>
+                            <p class="stats-title">PERDEDOR</p>
                             <p class="stats-result"><%=data.loserTeamName%></p>
                         </div>
                     </div>
@@ -121,16 +121,84 @@
                             <%=data.perdedor.kda.kills%> / <%=data.perdedor.kda.deaths%> / <%=data.perdedor.kda.assists%>
                         </p>
                     </div>
-                    <p class="stats-title">Oro total</p>
-                    <p class="stats-title">Puntos de visión</p>
+                    <div class="stats">
+                        <p class="stats-result">
+                            <%=data.ganador.oro%>
+                        </p>
+                        <p class="stats-title">Oro total</p>
+                        <p class="stats-result">
+                            <%=data.perdedor.oro%>
+                        </p>
+                    </div>
+                    <div class="stats">
+                        <p class="stats-result">
+                            <%=data.ganador.puntosDeVision%>
+                        </p>
+                        <p class="stats-title">Puntos de visión</p>
+                        <p class="stats-result">
+                            <%=data.perdedor.puntosDeVision%>
+                        </p>
+                    </div>
                 </div>
                 <hr class="right-line">
                 <div id="second-section">
-                    <p class="overlay-subtitle">Damage dealt</p>
+                    <p class="overlay-subtitle" style="margin: 0">Daño Total</p>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <div id="winner-damage" class="damage">
+                            <% for (var i=0; i < 5; i++ ) { %>
+                                <div class="damage-individual">
+                                    <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.damage[i].championName %>.png">
+                                    <div>
+                                        <p class="stats-result"><%= data.ganador.damage[i].amount %>k</p>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div id="loser-damage" class="damage">
+                            <% for (var i=0; i < 5; i++ ) { %>
+                                <div class="damage-individual">
+                                    <div>
+                                        <p class="stats-result"><%= data.perdedor.damage[i].amount %>k</p>
+                                    </div>
+                                    <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.damage[i].championName %>.png">
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    
                 </div>
                 <hr class="right-line">
                 <div id="third-section">
-                    <p class="overlay-subtitle">Gold distribution</p>
+                    <p class="overlay-subtitle">Distribución de Oro</p>
+                    <!--Cambiar esto por la distribucion de oro-->
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <div id="winner-damage" class="damage">
+                            <% for (var i=0; i < 5; i++ ) { %>
+                                <div class="damage-individual">
+                                    <img
+                                        src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.damage[i].championName %>.png">
+                                    <div>
+                                        <p class="stats-result">
+                                            <%= data.ganador.damage[i].amount %>k
+                                        </p>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                        <div id="loser-damage" class="damage">
+                            <% for (var i=0; i < 5; i++ ) { %>
+                                <div class="damage-individual">
+                                    <div>
+                                        <p class="stats-result">
+                                            <%= data.perdedor.damage[i].amount %>k
+                                        </p>
+                                    </div>
+                                    <img
+                                        src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.damage[i].championName %>.png">
+                                </div>
+                                <% } %>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

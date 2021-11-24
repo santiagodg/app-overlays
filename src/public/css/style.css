@@ -252,6 +252,28 @@ a:hover {
   height: 390px;
 }
 
+.damage {
+  width: 40%;
+}
+
+.damage .damage-individual {
+  display: flex;
+  align-items: center;
+}
+
+.damage-individual p {
+  margin: 0 15px;
+}
+
+.damage img {
+  width: 55px;
+  height: 55px;
+}
+
+#loser-damage .damage-individual {
+  justify-content: flex-end;
+}
+
 #first-section {
   height: 300px;
   padding-top: 47px;
@@ -287,8 +309,17 @@ a:hover {
 
 .stats {
   display: flex;
-  justify-items: center;
-  align-items: center;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.stats p {
+  text-align: center;
+  width: 25%;
+}
+
+.stats .stats-title {
+  width: 30%;
 }
 
 .navbar {

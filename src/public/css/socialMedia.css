@@ -23,6 +23,7 @@ a:hover {
   border-radius: 10px;
   color: black;
   margin: 0 2vw;
+  cursor: pointer;
 }
 
 #actions {

@@ -18,6 +18,7 @@ a:hover {
   background-color: #00ffc7;
   border-radius: 10px;
   color: black;
+  cursor: pointer;
 }
 
 #actions {

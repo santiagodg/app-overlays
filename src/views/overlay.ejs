@@ -25,7 +25,7 @@
             </a>
             <div id="actions">
                 <a class="nav-item nav-link" href="#">Browser View</a>
-                <a class="nav-item nav-link" href="#" id="download">Download</a>
+                <button class="nav-item nav-link" id="download" onclick="downloadOverlay()">Download</button>
             </div>
         </div>
     </nav>
@@ -216,101 +216,102 @@
     <script src="/FileSaver.min.js"></script>
     <script src="/html2canvas.min.js"></script>
     <script>
-        var overlay = document.getElementById('overlay');
+        const download = (rootID, fileName) => {
+            const node = document.getElementById(rootID);
 
-        // html2canvas(overlay, { 
-        //     useCORS: true,
-        //     backgroundColor: null,
-        // })
-        //     .then(canvas => {
-        //         canvas.toBlob(blob => {
-        //             saveAs(blob, 'myImage.png');
-        //         });
-        //     })
-        //     .catch(error => {
-        //         console.error('oops, something went wrong!', error);
-        //     });
+            html2canvas(node, { 
+                useCORS: true,
+                backgroundColor: null,
+            })
+                .then(canvas => {
+                    canvas.toBlob(blob => {
+                        saveAs(blob, fileName);
+                    });
+                })
+                .catch(error => {
+                    console.error('oops, something went wrong!', error);
+                });
+        }
+
+        const downloadOverlay = () => {
+            download('overlay', 'overlay.png');
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+        function horizontalBarChart(ctx, data1, data2){
+            var data = {
+                labels: ["", "", "", "", ""],
+                datasets: [{
+                    label: "winner",
+                    backgroundColor: "rgba(54, 162, 235, 0.2)",
+                    borderColor: "rgb(54, 162, 235)",
+                    borderWidth: 2,
+                    data: data1,
+                    }, {
+                    label: "loser",
+                    backgroundColor: "rgba(255,99,132,0.2)",
+                    borderColor: "rgba(255,99,132,1)",
+                    borderWidth: 2,
+                    data: data2,
+                    },
+                ]
+                };
+            const myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                stacked: true,
+                data: data,
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                    yAxes: [{
+                        stacked: true
+                    }],
+                    xAxes: [{
+                            display: false
+                        }]
+                    }
+                }
+            });
+        }
+
+        // Dano Total
+        const ctx1 = document.getElementById('danoTotalChart');
+        const danoData1 = [
+        -Math.abs(parseInt(`<%= data.ganador.damage[0].amount %>`)),
+        -Math.abs(parseInt(`<%= data.ganador.damage[1].amount %>`)),
+        -Math.abs(parseInt(`<%= data.ganador.damage[2].amount %>`)),
+        -Math.abs(parseInt(`<%= data.ganador.damage[3].amount %>`)),
+        -Math.abs(parseInt(`<%= data.ganador.damage[4].amount %>`)) 
+        ]
+        const danoData2 = [
+            parseInt(`<%= data.perdedor.damage[0].amount %>`), 
+            parseInt(`<%= data.perdedor.damage[1].amount %>`), 
+            parseInt(`<%= data.perdedor.damage[2].amount %>`), 
+            parseInt(`<%= data.perdedor.damage[3].amount %>`), 
+            parseInt(`<%= data.perdedor.damage[4].amount %>`)
+        ]
+        //Distribucion oro
+        const ctx2 = document.getElementById('distribucionOroChart');
+        const oroData1 = [
+        -Math.abs(parseInt(`<%= data.ganador.goldDistribution[0].amount %>`)),
+        -Math.abs(parseInt(`<%= data.ganador.goldDistribution[1].amount %>`)),
+        -Math.abs(parseInt(`<%= data.ganador.goldDistribution[2].amount %>`)),
+        -Math.abs(parseInt(`<%= data.ganador.goldDistribution[3].amount %>`)),
+        -Math.abs(parseInt(`<%= data.ganador.goldDistribution[4].amount %>`)) 
+        ]
+        const oroData2 = [
+            parseInt(`<%= data.perdedor.goldDistribution[0].amount %>`), 
+            parseInt(`<%= data.perdedor.goldDistribution[1].amount %>`), 
+            parseInt(`<%= data.perdedor.goldDistribution[2].amount %>`), 
+            parseInt(`<%= data.perdedor.goldDistribution[3].amount %>`), 
+            parseInt(`<%= data.perdedor.goldDistribution[4].amount %>`)]
+        
+        horizontalBarChart(ctx1, danoData1, danoData2)
+        horizontalBarChart(ctx2, oroData1, oroData2)
     </script>
 </body>
-
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
-<script>
-    
-    function horizontalBarChart(ctx, data1, data2){
-        var data = {
-            labels: ["", "", "", "", ""],
-            datasets: [{
-                label: "winner",
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                borderColor: "rgb(54, 162, 235)",
-                borderWidth: 2,
-                data: data1,
-                }, {
-                label: "loser",
-                backgroundColor: "rgba(255,99,132,0.2)",
-                borderColor: "rgba(255,99,132,1)",
-                borderWidth: 2,
-                data: data2,
-                },
-            ]
-            };
-        const myChart = new Chart(ctx, {
-            type: 'horizontalBar',
-            stacked: true,
-            data: data,
-            options: {
-                legend: {
-                    display: false
-                },
-                scales: {
-                yAxes: [{
-                    stacked: true
-                }],
-                xAxes: [{
-                        display: false
-                    }]
-                }
-            }
-        });
-    }
-
-    // Dano Total
-    const ctx1 = document.getElementById('danoTotalChart');
-    const danoData1 = [
-    -Math.abs(parseInt(`<%= data.ganador.damage[0].amount %>`)),
-    -Math.abs(parseInt(`<%= data.ganador.damage[1].amount %>`)),
-    -Math.abs(parseInt(`<%= data.ganador.damage[2].amount %>`)),
-    -Math.abs(parseInt(`<%= data.ganador.damage[3].amount %>`)),
-    -Math.abs(parseInt(`<%= data.ganador.damage[4].amount %>`)) 
-    ]
-    const danoData2 = [
-        parseInt(`<%= data.perdedor.damage[0].amount %>`), 
-        parseInt(`<%= data.perdedor.damage[1].amount %>`), 
-        parseInt(`<%= data.perdedor.damage[2].amount %>`), 
-        parseInt(`<%= data.perdedor.damage[3].amount %>`), 
-        parseInt(`<%= data.perdedor.damage[4].amount %>`)
-    ]
-    //Distribucion oro
-    const ctx2 = document.getElementById('distribucionOroChart');
-    const oroData1 = [
-    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[0].amount %>`)),
-    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[1].amount %>`)),
-    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[2].amount %>`)),
-    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[3].amount %>`)),
-    -Math.abs(parseInt(`<%= data.ganador.goldDistribution[4].amount %>`)) 
-    ]
-    const oroData2 = [
-        parseInt(`<%= data.perdedor.goldDistribution[0].amount %>`), 
-        parseInt(`<%= data.perdedor.goldDistribution[1].amount %>`), 
-        parseInt(`<%= data.perdedor.goldDistribution[2].amount %>`), 
-        parseInt(`<%= data.perdedor.goldDistribution[3].amount %>`), 
-        parseInt(`<%= data.perdedor.goldDistribution[4].amount %>`)]
-    
-    horizontalBarChart(ctx1, danoData1, danoData2)
-    horizontalBarChart(ctx2, oroData1, oroData2)
-    
-</script>
-
 </html>

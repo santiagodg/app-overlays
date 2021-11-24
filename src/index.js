@@ -44,6 +44,10 @@ app.get('/', (req, res) => {
   return res.render('home')
 })
 
+app.get('/socialMedia', (req, res) => {
+  return res.render('socialMedia')
+})
+
 const logosUpload = upload.fields([
   { name: 'winnerTeamLogo', maxCount: 1 },
   { name: 'loserTeamLogo', maxCount: 1 },
@@ -182,7 +186,7 @@ app.post('/output', logosUpload, async (req, res, next) => {
       if (curr.win !== true) {
         return prev
       }
-      
+
       return curr.teamId
     }, 0)
   })()

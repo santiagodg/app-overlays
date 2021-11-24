@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/socialMedia.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <title>Social Media</title>
+</head>
+
+<body style="background-color: #000000;">
+    <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="img/feg-logo.png" alt="Far East Gaming logo" height="24"
+                    class="d-inline-block align-text-top">
+                <span id="navtitle">Postgame Overlay Generator</span>
+            </a>
+        </div>
+    </nav>
+    <div id="post">
+        <div id="left">
+            <div id="tornament-info">
+                <p id="tournament">LLC</p>
+                <p id="phase">Phase</p>
+            </div>
+            <div id="teamLogo">
+                <img src="" alt="">
+            </div>
+            <p id="teamName">Team Name</p>
+            <div id="leagueLogo">
+                <img src="img/feg-logo.png" alt="Tournament Logo">
+            </div>
+        </div>
+        <div id="right">
+            <div id="title">
+                <h1 id="result">WINNER</h1>
+                <h2 id="result-spanish">Ganador</h2>
+            </div>
+            <div id="teamMembers">
+                <% for (var i=0; i < 5; i++ ) { %>
+                    <div class="player">
+                        <p class="username">Username</p>
+                        <div class="champion">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <div id="stats">
+                <div class="stat" id="dragones">
+                    <div class="stat-img">
+                        <img src="img/dragon.png" alt="Dragon">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title">Dragones</p>
+                    <p class="stat-result">23</p>
+                </div>
+                <div class="stat" id="kills">
+                    <div class="stat-img">
+                        <img src="img/asesinatos.png" alt="Asesinatos">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title accent">Asesinatos</p>
+                    <p class="stat-result accent">23</p>
+                </div>
+                <div class="stat" id="barones">
+                    <div class="stat-img">
+                        <img src="img/baron.png" alt="Barones">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title">Barones</p>
+                    <p class="stat-result">23</p>
+                </div>
+                <div class="stat" id="torres">
+                    <div class="stat-img">
+                        <img src="img/torre.png" alt="Torres">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title accent">Torres</p>
+                    <p class="stat-result accent">23</p>
+                </div>
+                <div class="stat" id="heraldos">
+                    <div class="stat-img">
+                        <img src="img/heraldo.png" alt="Heraldos">
+                        <div class="line"></div>
+                    </div>
+                    <p class="stat-title">Heraldos</p>
+                    <p class="stat-result">23</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

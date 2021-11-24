@@ -15,7 +15,7 @@
         rel="stylesheet">
     <title>Output</title>
 </head>
-<body>
+<body style="background-color: #000000;">
     <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -23,9 +23,12 @@
                     class="d-inline-block align-text-top">
                 <span id="navtitle">Postgame Overlay Generator</span>
             </a>
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">For Social Media...</a>
+            <a class="nav-item nav-link" href="#">Browser View</a>
         </div>
     </nav>
-    <div id="overlay"  style="background-color: #000000;">
+    <div id="overlay"  >
         <div style="display: flex; justify-content: space-evenly;">
             <div id="left-info">
                 <h1 id="overlay-title">ESTADÍSTICAS DE LA PARTIDA</h1>
@@ -170,7 +173,6 @@
                 <hr class="right-line">
                 <div id="third-section">
                     <p class="overlay-subtitle">Distribución de Oro</p>
-                    <!--Cambiar esto por la distribucion de oro-->
                     <div style="display: flex; justify-content: space-evenly;">
                         <div id="winner-damage" class="damage">
                             <% for (var i=0; i < 5; i++ ) { %>
@@ -203,9 +205,4 @@
             </div>
         </div>
     </div>
-    <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.prohibicion[0] %>.png"><pre>
-        <%= JSON.stringify(data, null, 2) %>
-    </pre>
-    
-</body>
 </html>

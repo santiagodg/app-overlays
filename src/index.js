@@ -236,7 +236,7 @@ app.post('/output', logosUpload, async (req, res, next) => {
       oro: goldEarned(loserID),
       puntosDeVision: visionScore(loserID),
       damage: damage(loserID),
-      goldDistribution: goldPerChampion(winnerID),
+      goldDistribution: goldPerChampion(loserID),
     },
   }
   res.render('output', { data: result })

@@ -15,17 +15,21 @@
         rel="stylesheet">
     <title>Output</title>
 </head>
-<body>
+<body style="background-color: #000000;">
     <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="img/feg-logo.png" alt="Far East Gaming logo" height="24"
                     class="d-inline-block align-text-top">
-                <span id="navtitle">Postgame Overlay Generator</span>
+                <span id="navtitle">Postgame Graphics Generator</span>
             </a>
+            <div id="actions">
+                <a class="nav-item nav-link" href="#">Browser View</a>
+                <a class="nav-item nav-link" href="#" id="download">Download</a>
+            </div>
         </div>
     </nav>
-    <div id="overlay"  style="background-color: #000000;">
+    <div id="overlay"  >
         <div style="display: flex; justify-content: space-evenly;">
             <div id="left-info">
                 <h1 id="overlay-title">ESTADÍSTICAS DE LA PARTIDA</h1>
@@ -173,14 +177,12 @@
                 <hr class="right-line">
                 <div id="third-section">
                     <p class="overlay-subtitle">Distribución de Oro</p>
-                    <!--Cambiar esto por la distribucion de oro-->
                     <div style="display: flex; justify-content: space-evenly;">
                         
                         <div id="winner-damage" class="damage">
                             <% for (var i=0; i < 5; i++ ) { %>
                                 <div class="damage-individual">
-                                    <img
-                                        src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.damage[i].championName %>.png">
+                                    <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.ganador.damage[i].championName %>.png">
                                     <div>
                                         <p class="stats-result">
                                             <%= data.ganador.goldDistribution[i].amount %>k
@@ -210,10 +212,25 @@
             </div>
         </div>
     </div>
-    <img src="https://ddragon.leagueoflegends.com/cdn/11.23.1/img/champion/<%= data.perdedor.prohibicion[0] %>.png"><pre>
-        <%= JSON.stringify(data, null, 2) %>
-    </pre>
-    
+
+    <script src="/FileSaver.min.js"></script>
+    <script src="/html2canvas.min.js"></script>
+    <script>
+        var overlay = document.getElementById('overlay');
+
+        // html2canvas(overlay, { 
+        //     useCORS: true,
+        //     backgroundColor: null,
+        // })
+        //     .then(canvas => {
+        //         canvas.toBlob(blob => {
+        //             saveAs(blob, 'myImage.png');
+        //         });
+        //     })
+        //     .catch(error => {
+        //         console.error('oops, something went wrong!', error);
+        //     });
+    </script>
 </body>
 
 <script

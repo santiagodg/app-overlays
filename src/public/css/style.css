@@ -5,12 +5,23 @@ body {
 
 a {
   text-decoration: none;
-  color: #00ffc7;
+  text-transform: uppercase;
+  color: white;
 }
 
 a:hover {
   color: #00ffc7;
   text-decoration: none;
+}
+
+#download {
+  background-color: #00ffc7;
+  border-radius: 10px;
+  color: black;
+}
+
+#actions {
+  display: flex;
 }
 
 .back-to-top {
@@ -167,6 +178,7 @@ a:hover {
   width: 1920px;
   height: 1080px;
   color: white;
+  background-color: transparent;
 }
 
 #overlay-title {

@@ -15,8 +15,8 @@
 <section id="hero">
     <div class="hero-container">
       <a href="/" class="hero-logo" data-aos="zoom-in"><img src="img/feg-logo.png" alt="Far East Gaming Logo" id="logo"></a>
-      <h1 data-aos="zoom-in">Postgame Overlay Generator</h1>
-      <h2 data-aos="fade-up">League of Legends Postgame Stats Overlay App</h2>
+      <h1 data-aos="zoom-in">Postgame Graphics Generator</h1>
+      <h2 data-aos="fade-up">League of Legends Postgame Stats Graphics App</h2>
     
       <form action="/output" enctype="multipart/form-data" method="post">
         <!-- matchId -->
@@ -41,7 +41,7 @@
             <!--Team Name-->
             <div data-aos="fade-up" data-aos-delay="450" class="form-group">
               <label for="winnerTeamName"></label>
-              <input type="text" class="form-control" placeholder="Blue Team Name" id="winnerTeamName" name="winnerTeamName">
+              <input type="text" class="form-control" placeholder="Winner Team Name" id="winnerTeamName" name="winnerTeamName">
             </div>
             <!-- Seleccionar archivo -->
             <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
@@ -54,7 +54,7 @@
             <!--Team Name-->
             <div data-aos="fade-up" data-aos-delay="450" class="form-group">
               <label for="loserTeamName"></label>
-              <input type="text" class="form-control" placeholder="Red Team Name" id="loserTeamName" name="loserTeamName">
+              <input type="text" class="form-control" placeholder="Loser Team Name" id="loserTeamName" name="loserTeamName">
             </div>
             <!-- Seleccionar archivo -->
             <div data-aos="fade-up" data-aos-delay="450" class="form-Control-sm">
@@ -63,8 +63,14 @@
             </div>
           </div>
         </div>
-        
-        <button type="submit" class="btn btn-lg" style="background-color: #00FFC7;" >GO</button>
+        <div class="row">
+          <div class="col pr-3">
+            <button type="submit" class="btn btn-lg ml-auto d-block" style="background-color: #00FFC7;" name="overlay">OVERLAY</button>
+          </div>
+          <div class="col pl-3">
+            <button type="submit" class="btn btn-lg mr-auto d-block" style="background-color: #00FFC7;" name="socialMedia">SOCIAL MEDIA</button>
+          </div>
+        </div>
       </form>
       <div id="credits"> 
         Developed by Santiago D, Abraham H, Nadia G, Jose G & Karina A. © 2021

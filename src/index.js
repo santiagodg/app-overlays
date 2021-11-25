@@ -1,13 +1,13 @@
 require('dotenv').config()
 const util = require('util')
 const path = require('path')
-const { handle } = require('./util');
+const { handle } = require('./util')
 
 const bodyParser = require('body-parser')
 const express = require('express')
 
-const RiotAPI = require('./riot-api');
-const Output = require('./output');
+const RiotAPI = require('./riot-api')
+const Output = require('./output')
 
 const multer = require('multer')
 
@@ -33,7 +33,7 @@ const upload = multer({ storage: storage })
 const app = express()
 app.use(express.json())
 
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -52,59 +52,63 @@ app.get('/socialMedia', (req, res) => {
 const logosUpload = upload.fields([
   { name: 'winnerTeamLogo', maxCount: 1 },
   { name: 'loserTeamLogo', maxCount: 1 },
-]);
+])
 
 const overlayOutput = async (req, res) => {
-  const [match, matchError] = await handle(RiotAPI.MatchV5.matchByMatchID(req.body.matchId));
+  const [match, matchError] = await handle(
+    RiotAPI.MatchV5.matchByMatchID(req.body.matchId)
+  )
 
   if (matchError) {
-    console.log(matchError);
+    console.log(matchError)
 
-    return res.sendStatus(404);
+    return res.sendStatus(404)
   }
 
-  const output = new Output(match);
+  const output = new Output(match)
 
-  output.loserTeamLogo  = req.files.loserTeamLogo[0].filename;
-  output.winnerTeamLogo = req.files.winnerTeamLogo[0].filename;
-  output.winnerTeamName = req.body.winnerTeamName;
-  output.loserTeamName  = req.body.loserTeamName;
-  output.matchPhase     = req.body.matchPhase;
-  output.tournament     = req.body.tournament;
+  output.loserTeamLogo = req.files.loserTeamLogo[0].filename
+  output.winnerTeamLogo = req.files.winnerTeamLogo[0].filename
+  output.winnerTeamName = req.body.winnerTeamName
+  output.loserTeamName = req.body.loserTeamName
+  output.matchPhase = req.body.matchPhase
+  output.tournament = req.body.tournament
 
-  return res.render('overlay', { data: output });
-};
+  return res.render('overlay', { data: output })
+}
 
 const socialMediaOutput = async (req, res) => {
-  const [match, matchError] = await handle(RiotAPI.MatchV5.matchByMatchID(req.body.matchId));
+  const [match, matchError] = await handle(
+    RiotAPI.MatchV5.matchByMatchID(req.body.matchId)
+  )
 
   if (matchError) {
-    console.log(matchError);
+    console.log(matchError)
 
-    return res.sendStatus(404);
+    return res.sendStatus(404)
   }
 
-  const output = new Output(match);
+  const output = new Output(match)
 
-  output.loserTeamLogo  = req.files.loserTeamLogo[0].filename;
-  output.winnerTeamLogo = req.files.winnerTeamLogo[0].filename;
-  output.winnerTeamName = req.body.winnerTeamName;
-  output.loserTeamName  = req.body.loserTeamName;
-  output.matchPhase     = req.body.matchPhase;
-  output.tournament     = req.body.tournament;
+  output.loserTeamLogo = req.files.loserTeamLogo[0].filename
+  output.winnerTeamLogo = req.files.winnerTeamLogo[0].filename
+  output.winnerTeamName = req.body.winnerTeamName
+  output.loserTeamName = req.body.loserTeamName
+  output.matchPhase = req.body.matchPhase
+  output.tournament = req.body.tournament
 
-  return res.render('socialMedia', { data: output });
-};
+  return res.render('socialMedia', { data: output })
+}
 
 app.post('/output', logosUpload, async (req, res) => {
   if (req.body.overlay !== undefined) {
-    return overlayOutput(req, res);
+    return overlayOutput(req, res)
   } else if (req.body.socialMedia !== undefined) {
-    return socialMediaOutput(req, res);
+    return socialMediaOutput(req, res)
   }
 
-  console.error('Output selection unknown');
-});
+  console.error('Output selection unknown')
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
